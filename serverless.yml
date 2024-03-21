@@ -1,0 +1,53 @@
+service: my-fist-project
+frameworkVersion: '3'
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize: 128
+  region: ap-southeast-1
+  atage: dev
+  
+
+
+functions:
+  createUser:
+    handler: src/handlers/createUser.handler
+    events:
+      - httpApi:
+          path: /users
+          method: POST
+          cors: true
+  getAllUsers:
+    handler: src/handlers/getUser.handler
+    events:
+      - httpApi:
+          path: /users
+          method: GET
+          cors: true
+  getUserByid:
+    handler: src/handlers/getUserById.handler
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: GET
+          cors: true
+  deleteByid:
+    handler: src/handlers/deleteUserById.handler
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: DELETE
+          cors: true
+  updateUser:
+    handler: src/handlers/updateUser.handler
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: PUT
+          cors: true
+    
+    
