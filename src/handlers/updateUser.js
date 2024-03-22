@@ -1,5 +1,5 @@
 const { connectDatabase } = require("../database/db");
-const User = require("../model/userModel");
+const User = require("../model/user");
 
 module.exports.handler = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false;
@@ -15,8 +15,8 @@ module.exports.handler = async (event, context) => {
 
         userObj = await User.findByIdAndUpdate(event.pathParameters.id, userObj, { new: true });
         return {
-            statusCode: 200,
-            body: JSON.stringify(userObj),
+            statusCode: 204
+           
         };
     } catch (err) {
         console.error(err);

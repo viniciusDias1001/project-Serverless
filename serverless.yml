@@ -13,6 +13,7 @@ provider:
   
 
 
+
 functions:
   createUser:
     handler: src/handlers/createUser.handler
@@ -49,5 +50,6 @@ functions:
           path: /users/{id}
           method: PUT
           cors: true
+ 
     
     

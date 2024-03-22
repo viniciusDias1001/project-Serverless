@@ -1,5 +1,5 @@
 const { connectDatabase } = require("../database/db");
-const User = require("../model/userModel");
+const User = require("../model/user");
 
 module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
@@ -10,7 +10,7 @@ module.exports.handler = async (event, context) => {
     let userObj = {
       email,
       name,
-      password,
+      password
     };
     userObj = await User.create(userObj);
 

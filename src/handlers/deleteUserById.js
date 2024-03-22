@@ -1,5 +1,5 @@
 const { connectDatabase } = require("../database/db");
-const User = require("../model/userModel");
+const User = require("../model/user");
 
 
 module.exports.handler = async (event, context) => {
@@ -10,8 +10,7 @@ module.exports.handler = async (event, context) => {
 
         userObj = await User.findByIdAndDelete(event.pathParameters.id);
         return {
-            statusCode: 200,
-            body: JSON.stringify(userObj),
+            statusCode: 204
         };
     } catch (err) {
         console.error(err);
